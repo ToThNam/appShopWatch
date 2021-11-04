@@ -3,31 +3,14 @@ import React, {useEffect} from 'react';
 import {View, Text, TextInput, TouchableOpacity, Image,} from 'react-native';
 import {useDispatch} from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
-import * as yup from 'yup';
+import { RegisterSchema } from '../helper/validSuport';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from "../styles/registerStyle";
 
 export default function Register({ navigation }) {
   const dispatch = useDispatch();
-  const LoginSchema = yup.object().shape({
-    Username: yup
-      .string()
-      .required("*Username is required field, please enter your name")
-      .max(20, "*Username should be 5-20 characters in length!")
-      .min(5, "*Username should be 5-20 characters in length!"),
-    ImgUrl: yup
-      .string(),
-    Email: yup
-      .string()
-      .required("*Email is required field, please enter email address")
-      .email("*Invalid Email format, please enter a valid email address"),
-    Password: yup
-      .string()
-      .required("*Password is required field, please enter password")
-      .min(6, "*Password at least 6 characters in length!"),
-  })
   const { register, setValue, getValues, control, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(LoginSchema),
+    resolver: yupResolver(RegisterSchema),
     defaultValues: {
       Username: '',
       ImgUrl: '',
@@ -52,8 +35,7 @@ export default function Register({ navigation }) {
         })
       .then(res => {
         if(res.data.status==="success"){
-          dispatch({type: 'LOGIN_SUCCESS', payload: { isLogin: true, user: res.data}})
-          dispatch({type: 'USER_DATA', detail:  res.data})
+          dispatch({type: 'LOGIN_SUCCESS', payload: { isLogin: true, user: res.data}, detail:  res.data})
         }
         else{
           alert(res.data.message)

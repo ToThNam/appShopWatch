@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,6 +13,7 @@ import detail from '../components/detail';
 import WishList from '../screens/wishList';
 import Login from '../screens/Login';
 import Register from '../components/register';
+import profile from '../components/profile';
 import { useSelector } from 'react-redux';
 
 const Stack = createStackNavigator();
@@ -93,12 +94,14 @@ const StackUser = () => {
   <Stack.Navigator >
     <Stack.Screen options={{ header: () => null }} name="user" component={user} />
     <Stack.Screen options={{ header: () => null }} name="WishList" component={WishList} />
-    <Stack.Screen options={{ header: () => null }} name="homeMain" component={homeMain} />
     <Stack.Screen options={{ header: () => null }} name="cart" component={cart} />
+    <Stack.Screen options={{ header: () => null }} name="storelist" component={storelist} />
+    <Stack.Screen options={{ header: () => null }} name="profile" component={profile} />
   </Stack.Navigator>
   );
 };
 const AppStack = () => {
+
   const isLogin=useSelector(store=>store.authReducer.isLogin)
   return (
     <NavigationContainer>

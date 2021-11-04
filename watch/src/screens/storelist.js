@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {getStore} from '../sevices/api';
 import styles from '../styles/storelistStyle';
-const storelist = () => {
+const storelist = ({navigation}) => {
   const [storeDataApi, setStoreDataApi] = useState();
   const getApiStore = async () => {
     const result = await getStore();

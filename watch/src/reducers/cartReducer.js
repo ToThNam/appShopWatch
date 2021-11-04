@@ -5,7 +5,6 @@ const initState = {
 export default function cartReducer(state = initState, action) {
   switch (action.type) {
     case "ADD_CART":
-      // console.log('action', action) // => { type: 'ADD_CART', detail: detail }
       const checkExist = state.cart.find(e => e.IDProduct  === action.detail.IDProduct )
       const newCart = checkExist 
         ?
@@ -24,7 +23,6 @@ export default function cartReducer(state = initState, action) {
         cart: newCart
       };
     case "REDUCE_ITEM":
-      console.log(action) // => { type: 'CHANGE_QUANTITY', data: item, }
       const newCartReduce = action.detail.quantity === 1
         ? state.cart.filter(e => e.IDProduct  !== action.detail.IDProduct ) :
         // truong hợp đã có sản phẩm đấy trong list
@@ -40,14 +38,12 @@ export default function cartReducer(state = initState, action) {
         cart: newCartReduce
       };
     case "REMOVE_ALL":
-      console.log(action) // => { type: 'REMOVE_ALL' }
       return {
         ...state,
         cart: []
         // quantity: state.quantity + 1
       };
     case "REMOVE_ITEM":
-      console.log(action) // => { type: 'REMOVE_ALL' }
       return {
         ...state,
         cart: state.cart.filter(e => e.IDProduct  !== action.data.IDProduct )

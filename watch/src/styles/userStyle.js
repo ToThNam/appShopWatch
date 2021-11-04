@@ -170,5 +170,69 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginLeft: 10
       },
+      hello:{
+        height:60,
+        width:'100%',
+        backgroundColor:'#F5F5F5',
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    txthello:{
+        fontWeight:'bold',
+    },
+    btnorder:{
+        height:70,
+        justifyContent:'space-between',
+        flexDirection:'row',
+        alignItems:'center',
+        borderBottomWidth:0.5,
+        borderBottomColor:'#E0E0E0'
+    },
+    description:{
+        marginLeft:10,
+    },
+    txtoption:{
+        fontWeight:'bold',
+    },
+    txtmission:{
+        color:'#969696'
+    },
+    btnnoti:{
+        height:70,
+        justifyContent:'space-between',
+        flexDirection:'row',
+        alignItems:'center',
+        borderBottomWidth:10,
+        borderBottomColor:'#E0E0E0'
+    },
+    service:{
+        height:50,
+        width:'100%',
+        marginLeft:10,
+        justifyContent:'center',
+        borderBottomColor:'#E0E0E0',
+        borderBottomWidth:1,
+    },
+    signout:{
+        height:120,
+        width:'100%',
+        backgroundColor:'#F5F5F5',
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    btnAdd: {
+      backgroundColor: 'black',
+      width: '70%',
+      height: 40,
+      alignSelf: 'center'
+    },
+    txtAdd: {
+      color: 'white',
+      fontSize: 20,
+      fontWeight: 'bold',
+      alignSelf: 'center',
+      marginTop: 5
+    },
+
 })
 export default styles;

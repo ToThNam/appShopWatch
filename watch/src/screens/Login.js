@@ -3,27 +3,17 @@ import React, {useEffect} from 'react';
 import {View, Text, TextInput, TouchableOpacity, Image,} from 'react-native';
 import {useDispatch} from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
-import * as yup from 'yup';
+import { LoginSchema } from '../helper/validSuport';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from "../styles/LoginStyle";
 
 export default function Login({ navigation }) {
   const dispatch = useDispatch();
-  const LoginSchema = yup.object().shape({
-    Email: yup
-      .string()
-      .required("*Email is required field, please enter email address")
-      .email("*Invalid Email format, please enter a valid email address"),
-    Password: yup
-      .string()
-      .required("*Password is required field, please enter password")
-      .min(6, "*Password at least 6 characters in length!"),
-  })
   const { register, setValue, getValues, control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(LoginSchema),
     defaultValues: {
-      Email: '',
-      Password: '',
+      Email: 'namto@gmail.com',
+      Password: '123456',
     },
   });
   useEffect(() => {
@@ -38,9 +28,8 @@ export default function Login({ navigation }) {
           password: getValues("Password"),
         })
       .then(res => {
-        if(res.data.status==="success"){
-          dispatch({type: 'LOGIN_SUCCESS', payload: { isLogin: true, user: res.data}})
-          dispatch({type: 'USER_DATA', detail:  res.data})
+        if(res.data){
+          dispatch({type: 'LOGIN_SUCCESS', payload: { isLogin: true}, detail:  res.data})
         }
         else{
           alert("Incorrect user information")
@@ -107,7 +96,6 @@ export default function Login({ navigation }) {
             <Text style={styles.txtLogin2}>Sign Up</Text>
         </TouchableOpacity>
       </View>
-
     </View>
   );
 }

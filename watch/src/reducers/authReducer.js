@@ -1,5 +1,4 @@
 const initState = {
-    token: '',
     userdata:[],
     isLogin:false,
   
@@ -9,13 +8,9 @@ const initState = {
         case "LOGIN_SUCCESS":
             return {
                 ...state,
-                isLogin: action.payload.isLogin
-            };
-        case "USER_DATA":
-            return {
-                ...state,
+                isLogin: action.payload.isLogin,
                 userdata: [...state.userdata, { ...action.detail }]
-            };
+            }; 
         case "USER_LOGOUT":
             return{
                 ...state,

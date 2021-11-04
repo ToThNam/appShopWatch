@@ -179,6 +179,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#F7FE2E',
     height: 40, width: '90%'
   },
+  btnAdd: {
+    backgroundColor: 'black',
+    width: '70%',
+    height: 40,
+    alignSelf: 'center'
+  },
+  txtAdd: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginTop: 5
+  },
   txtCheckout: {
     marginTop: 5,
     fontWeight:

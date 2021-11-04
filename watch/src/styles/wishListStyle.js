@@ -152,5 +152,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginLeft: 10
   },
+  btnAdd: {
+    backgroundColor: 'black',
+    width: '70%',
+    height: 40,
+    alignSelf: 'center'
+  },
+  txtAdd: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginTop: 5
+  },
 })
 export default styles;

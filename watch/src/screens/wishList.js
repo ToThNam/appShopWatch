@@ -73,6 +73,9 @@ const WishList = ({navigation}) => {
            source={require('../assets/images/Capture.png')}
            style={[styles.emtyImage]}
           />
+        <TouchableOpacity style={styles.btnAdd} onPress={()=>{navigation.navigate("homeMain")}}>
+          <Text style={styles.txtAdd}>SHOP NOW</Text>
+        </TouchableOpacity>
         </View>:
     <View style={[styles.marginTop10]}>
       <View style={[styles.header]}>

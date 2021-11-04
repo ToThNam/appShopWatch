@@ -4,8 +4,10 @@ import {
   Text,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import Ionicons  from 'react-native-vector-icons/Ionicons'
 import styles from '../styles/userStyle';
 
 export default function user({ navigation }) {
@@ -17,25 +19,72 @@ export default function user({ navigation }) {
     } 
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
-      <View style={{marginBottom:10}}>
-        <Image
-          source={{uri: 'https://img4.goodfon.com/wallpaper/nbig/9/3b/novyi-god-chasy-polnoch-dozhdik-prazdnik-new-year-watch-holi.jpg',}}
-          style={styles.background}
-        />
-        <Image
-          source={{
-            uri: dataUser[0]?.data.imgUser
-          }}
-          style={styles.avatar}
-        />
-        <Text style={styles.name}>{dataUser[0]?.data.username}</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('WishList')}>
-          <Text style={styles.list}>Danh sách yêu thích</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={SignOut}>
-          <Text style={styles.list}>Logout</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView>
+                <View style={styles.hello}>
+                    <Text style={styles.txthello}>Hello, {dataUser[0]?.data.username}!</Text>
+                </View>
+                <TouchableOpacity style={styles.btnorder} >
+                        <View style={styles.description}>
+                            <Text style={styles.txtoption}>MY ORDERS</Text>
+                            <Text style={styles.txtmission}>Orders Status, History and Tracking</Text>
+                        </View>
+                            <Ionicons name="chevron-forward" size={27} color={"black"} style={{marginRight:5}}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnorder} onPress={() => navigation.navigate('profile')}>
+                        <View style={styles.description}>
+                            <Text style={styles.txtoption}>PROFILE</Text>
+                            <Text style={styles.txtmission}>Manage name, email, password</Text>
+                        </View>
+                            <Ionicons name="chevron-forward" size={27} color={"black"} style={{marginRight:5}}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnorder}  onPress={() => navigation.navigate('WishList')}>
+                        <View style={styles.description}>
+                            <Text style={styles.txtoption}>MY LOVE STYLE</Text>
+                            <Text style={styles.txtmission}>Wish list status, product of my love</Text>
+                        </View>
+                            <Ionicons name="chevron-forward" size={27} color={"black"} style={{marginRight:5}}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnorder}>
+                        <View style={styles.description}>
+                            <Text style={styles.txtoption}>MANAGE PREFERENCE</Text>
+                            <Text style={styles.txtmission}>Marketing preference for emailand push notification</Text>
+                        </View>
+                            <Ionicons name="chevron-forward" size={27} color={"black"} style={{marginRight:5}}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnorder} >
+                        <View style={styles.description}>
+                            <Text style={styles.txtoption}>FIND A STORE</Text>
+                            <Text style={styles.txtmission}>Manage shipping and billing address</Text>
+                        </View>
+                            <Ionicons name="chevron-forward" size={27} color={"black"} style={{marginRight:5}}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnorder}>
+                        <View style={styles.description}>
+                            <Text style={styles.txtoption}>FOREVER 21 CREDIT CARD</Text>
+                            <Text style={styles.txtmission}>Manage F21 Credit Card</Text>
+                        </View>
+                            <Ionicons name="chevron-forward" size={27} color={"black"} style={{marginRight:5}}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnnoti}>
+                        <View style={styles.description}>
+                            <Text style={styles.txtoption}>FOREVER 21 VISA CREDIT CARD</Text>
+                            <Text style={styles.txtmission}>Manage F21 Visa Credit Card</Text>
+                        </View>
+                            <Ionicons name="chevron-forward" size={27} color={"black"} style={{marginRight:5}}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnnoti}>
+                        <View style={styles.description}>
+                            <Text style={styles.txtoption}>NOTIFICATIONS</Text>
+                            <Text style={styles.txtmission}>View events and promotions</Text>
+                        </View>
+                            <Ionicons name="chevron-forward" size={27} color={"black"} style={{marginRight:5}}/>
+                </TouchableOpacity>  
+                <View style={styles.signout}>
+                  <TouchableOpacity style={styles.btnAdd} onPress={()=>SignOut()}>
+                    <Text style={styles.txtAdd}>SIGN OUT</Text>
+                 </TouchableOpacity>
+                </View>
+            </ScrollView>
     </View>
   );
 }

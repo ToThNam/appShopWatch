@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from '../styles/cartStyle';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const Cart = () => {
+const Cart = ({navigation}) => {
   const dispatch = useDispatch();
   const data = useSelector((store) => store.cartReducer.cart);
   const onRemoveAll = () => dispatch({ type: 'REMOVE_ALL' })
@@ -101,6 +101,9 @@ const Cart = () => {
             source={require('../assets/images/Capture.png')}
             style={[styles.emtyImage]}
           />
+        <TouchableOpacity style={styles.btnAdd} onPress={()=>{navigation.navigate("homeMain")}}>
+          <Text style={styles.txtAdd}>SHOP NOW</Text>
+        </TouchableOpacity>
         </View>:
     <View style={{ backgroundColor: 'white', height: '100%' }}>
       <View style={[styles.header]}>

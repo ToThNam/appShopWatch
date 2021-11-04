@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     },
     errView:{
         alignItems: 'center',
-        marginTop: 15,
+        marginTop: 10,
         marginBottom:5
     },
     errInput:{

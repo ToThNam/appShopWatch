@@ -7,7 +7,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useDispatch, useSelector } from "react-redux";
 import Swiper from 'react-native-swiper'
 
-
 const detail = ({ route }) => {
   const navigation = useNavigation();
   const { detail } = route.params;
@@ -32,7 +31,7 @@ const detail = ({ route }) => {
         <Text style={styles.title}>Detail</Text>
       </View>
       <ScrollView style={{ backgroundColor: 'white' }}>
-        <Swiper style={styles.wrap} showsButtons loop={true} showsButtons={false} autoplay={true}	>
+        <Swiper style={styles.wrap} dotColor='grey' activeDotColor='white' showsButtons loop={true} showsButtons={false} autoplay={true}	>
           <View testID="Hello" style={styles.slide}>
             <Image
               source={{ uri: detail.ImageProduct }}
