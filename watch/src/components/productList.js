@@ -6,17 +6,16 @@ import styles from '../styles/productListStyle';
 const productL = ({ route }) => {
   const { productList } = route.params;
   const dataListProduct = productList.dataList
-  let quantytity  = []
-  for (let i = 0; i < dataListProduct.length; i++) {
-    quantytity = dataListProduct.map((e ) => e.IDProduct)[i]
-  }
+  const quantytity = dataListProduct.length
   const navigation = useNavigation();
   const onMoveToDetail = (dataDetail ) => () => {
     navigation.navigate('detail', { detail: dataDetail });
   }
   const Header = () => {
     return (
-      < View style={styles.headerFl}/>
+      <View style={styles.headerFl}>
+      <Text style={styles.txtHeaderFl} >{quantytity} styles</Text>
+    </View>
     )
   }
   return (
