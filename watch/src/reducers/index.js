@@ -1,11 +1,10 @@
 import { combineReducers } from "redux";
-import cartReducer from "./cartReducer";
-import wishlistReducer from "./wishlistReducer";
-import authReducer from "./authReducer";
-// ket noi cac reducer lai voi nhau
+import listReducer from "./wishList/reducer";
+import authReducer from "./authentication/reducer";
+import cartReducer from "./cart/reducer";
 const rootReducer = combineReducers({
   cartReducer,
-  wishlistReducer,
+  listReducer,
   authReducer,
 });
 

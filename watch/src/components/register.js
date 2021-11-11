@@ -1,10 +1,10 @@
-import axios from 'axios';
 import React, {useEffect} from 'react';
 import {View, Text, TextInput, TouchableOpacity, Image,} from 'react-native';
 import {useDispatch} from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { RegisterSchema } from '../helper/validSuport';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { logUp } from '../reducers/authentication/action';
 import styles from "../styles/registerStyle";
 
 export default function Register({ navigation }) {
@@ -24,24 +24,12 @@ export default function Register({ navigation }) {
     register('Email');
     register('Password');
   }, [register]);
-  const onSignUp = () => {
-    axios.post(
-        'http://10.0.2.2:3000/user/SignUp',
-        {
-          username: getValues("Username"),
-          imgUser: getValues("ImgUrl"),
-          email: getValues("Email"),
-          password: getValues("Password"),
-        })
-      .then(res => {
-        if(res.data.status==="success"){
-          dispatch({type: 'LOGIN_SUCCESS', payload: { isLogin: true, user: res.data}, detail:  res.data})
-        }
-        else{
-          alert(res.data.message)
-        }
-      })
-  };
+  const onSignUp = () => dispatch(logUp(
+    getValues('Username'),
+    getValues('ImgUrl'),
+    getValues('Email'),
+    getValues('Password'),
+  ))
   return (
     <View style={styles.container}>
       <Image source={{uri : 'https://cdn3.dhht.vn/wp-content/uploads/2019/11/logo-full-mau.png'}} 

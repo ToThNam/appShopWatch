@@ -1,26 +1,20 @@
-import React, { useState,useEffect } from 'react'
-import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
-import styles from '../styles/wishListStyle';
+import React from 'react'
+import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native'
+import { removeItem } from '../reducers/wishList/action';
 import { useDispatch, useSelector } from "react-redux";
+import styles from '../styles/wishListStyle';
 import FontAwesome from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const WishList = ({navigation}) => {
   const dispatch = useDispatch();
-  const [data, setData]=useState()
-  const dataList = useSelector((store) => store.wishlistReducer.list);
-  useEffect(() => {
-    setData(dataList)
-  }, [dataList])
-  const onRemoveItem = (item) => () => dispatch({ type: 'REMOVE_ITEM', data: item })
-  const quantytities = data?.reduce(function (previousValue, currentValue) {
-    return previousValue + currentValue.quantity
-  }, 0)
+  const data = useSelector((store) => store.listReducer.list);
+  const onRemoveItem = (item) => () => dispatch(removeItem(item)  )
   const Header = () => {
     return (
       <View>
-        <View style={[styles.FLheader]}>
-          {/* <Text style={[styles.txtFlheader]}>sản phẩm, tổng cộng</Text> */}
+        <View style={styles.headerFl}>
+          <Text style={styles.txtHeaderFl} >{data.length} styles</Text>
         </View>
       </View>
     )
@@ -59,7 +53,7 @@ const WishList = ({navigation}) => {
     </View>
   );
   return (
-    quantytities === 0 ?
+    data?.length === 0 ?
       <View style={[styles.emtyView]}>
         <View style={[styles.header]}>
           <TouchableOpacity onPress={() => navigation.goBack()} >

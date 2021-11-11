@@ -1,20 +1,17 @@
 import React from 'react'
 import { Text, Image, FlatList, View, TouchableOpacity, StyleSheet } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useNavigation } from '@react-navigation/native';
 import styles from '../styles/productListStyle';
-const productL = ({ route }) => {
+const productL = ({ route, navigation }) => {
   const { productList } = route.params;
   const dataListProduct = productList.dataList
-  const quantytity = dataListProduct.length
-  const navigation = useNavigation();
   const onMoveToDetail = (dataDetail ) => () => {
     navigation.navigate('detail', { detail: dataDetail });
   }
   const Header = () => {
     return (
       <View style={styles.headerFl}>
-      <Text style={styles.txtHeaderFl} >{quantytity} styles</Text>
+      <Text style={styles.txtHeaderFl} >{dataListProduct.length} styles</Text>
     </View>
     )
   }
@@ -59,6 +56,7 @@ const productL = ({ route }) => {
             </View>
           )
         }}
+        keyExtractor={(e,i)=>i.toString()}
         ListHeaderComponent={Header}
       />
     </View>

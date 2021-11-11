@@ -1,12 +1,12 @@
+import { ACTION_TYPES } from "./types";
 const initState = {
   quantity: 1,
   cart: [],
 };
 export default function cartReducer(state = initState, action) {
   switch (action.type) {
-    case "ADD_CART":
+    case ACTION_TYPES.ADD_CART:
       const checkExist = state.cart.find(e => e.IDProduct  === action.detail.IDProduct )
-      const newCart = checkExist 
         ?
         // truong hợp đã có sản phẩm đấy trong list
         state.cart?.map(e => {
@@ -20,9 +20,9 @@ export default function cartReducer(state = initState, action) {
 
       return {
         ...state,
-        cart: newCart
+        cart: checkExist
       };
-    case "REDUCE_ITEM":
+    case ACTION_TYPES.REDUCE_ITEM:
       const newCartReduce = action.detail.quantity === 1
         ? state.cart.filter(e => e.IDProduct  !== action.detail.IDProduct ) :
         // truong hợp đã có sản phẩm đấy trong list
@@ -37,17 +37,15 @@ export default function cartReducer(state = initState, action) {
         ...state,
         cart: newCartReduce
       };
-    case "REMOVE_ALL":
+    case ACTION_TYPES.REMOVE_ALL:
       return {
         ...state,
         cart: []
-        // quantity: state.quantity + 1
       };
-    case "REMOVE_ITEM":
+    case ACTION_TYPES.REMOVE_ITEM:
       return {
         ...state,
         cart: state.cart.filter(e => e.IDProduct  !== action.data.IDProduct )
-        // quantity: state.quantity + 1
       };
       
     default:

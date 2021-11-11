@@ -10,7 +10,7 @@ exports.signin  = (req, res) => {
   let sql =`SELECT * FROM user WHERE email='${email}' and password='${password}'`
   dbConn.query(sql,(err, results)=>{
       if (results.length === 0) {
-          res.json({ status: 'fail', error: err})
+          res.json({ status: 'fail', error: err, message:"Incorrect user information"})
       }
       else {
           res.json({ status: 'success', token: token, data: results[0], message:'Logged in successfully' })

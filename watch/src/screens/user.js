@@ -2,21 +2,18 @@ import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import Ionicons  from 'react-native-vector-icons/Ionicons'
 import styles from '../styles/userStyle';
+import { logOut } from '../reducers/authentication/action';
 
 export default function user({ navigation }) {
   const dataUser = useSelector(store => store.authReducer.userdata);
   const dispatch = useDispatch();
-  const SignOut =()=>{
-    dispatch({
-      type: 'USER_LOGOUT', payload: {isLogin: false} })
-    } 
+  const SignOut =()=> dispatch(logOut())
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <ScrollView>

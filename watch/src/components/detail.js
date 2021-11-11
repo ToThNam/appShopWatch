@@ -1,27 +1,20 @@
 import React, { useState } from 'react'
-import { View, Text, Image, FlatList, StatusBar, ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native'
 import styles from '../styles/detailStyle';
-import AntDesign from 'react-native-vector-icons/AntDesign'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useDispatch, useSelector } from "react-redux";
-import Swiper from 'react-native-swiper'
+import Swiper from 'react-native-swiper';
+import { addCart } from '../reducers/cart/action';
+import { addList } from '../reducers/wishList/action';
 
-const detail = ({ route }) => {
-  const navigation = useNavigation();
+const detail = ({ route, navigation }) => {
   const { detail } = route.params;
   const dispatch = useDispatch();
-  const onAddCart = () => {
-    dispatch({ type: 'ADD_CART', detail: detail })
-  }
-  const onAddList = () => {
-    dispatch({ type: 'ADD_LIST', detail: detail })
-  }
-  const [heart, setHeart] = useState(false);
-  const addFavorite = () => {
-    onAddList(); 
-    setHeart(!heart);
-  };
+  const wishList = useSelector(store => store.listReducer.list)
+  const onAddCart = () => dispatch(addCart(detail))
+  const onAddList = () => dispatch(addList(detail))
+  const checkHeart = wishList.some(e => e.IDProduct === detail.IDProduct)
   return (
     <>
       <View style={styles.header}>
@@ -63,10 +56,10 @@ const detail = ({ route }) => {
             <Text style={styles.Detail}>Price: {detail.Price} ₫</Text>
           </View>
           <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity style={styles.startContent} onPress={() => addFavorite()}>
+            <TouchableOpacity style={styles.startContent} onPress={() => onAddList()}>
               <AntDesign
-                name={heart ? 'heart' : 'hearto'}
-                color={heart ? '#990000' : 'grey'}
+                name={checkHeart ? 'heart' : 'hearto'}
+                color={checkHeart ? '#990000' : 'grey'}
                 size={30}
                 style={styles.maginLeft10}
               />

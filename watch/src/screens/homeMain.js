@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, StyleSheet, Text, TouchableOpacity, View, Image, TextInput } from 'react-native';
+import { FlatList, Text, TouchableOpacity, View, Image, TextInput } from 'react-native';
 import { getCategory, getProduct } from "../sevices/api";
 import styles from "../styles/homeMainStyles";
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -117,6 +117,7 @@ const homeMain = ({ navigation }) => {
             </TouchableOpacity>
           )
         }}
+        keyExtractor={(e,i)=>i.toString()}
         ListFooterComponent={Footer}
         ListHeaderComponent={Header}
       />

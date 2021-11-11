@@ -97,6 +97,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: '30%'
   },
+  headerFl: {
+    marginTop: 5
+  },
+  txtHeaderFl: {
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
+    color: '#bdbdbd'
+  },
   groupPrice: {
     marginTop: 11,
     marginLeft: 10,

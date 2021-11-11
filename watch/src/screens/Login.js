@@ -1,10 +1,10 @@
-import axios from 'axios';
 import React, {useEffect} from 'react';
 import {View, Text, TextInput, TouchableOpacity, Image,} from 'react-native';
-import {useDispatch} from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { LoginSchema } from '../helper/validSuport';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { logIn } from "../reducers/authentication/action";
+import { useDispatch } from "react-redux";
 import styles from "../styles/LoginStyle";
 
 export default function Login({ navigation }) {
@@ -20,22 +20,10 @@ export default function Login({ navigation }) {
     register('Email');
     register('Password');
   }, [register]);
-  const onLogin = () => {
-    axios.post(
-        'http://10.0.2.2:3000/user/login',
-        {
-          email: getValues("Email"),
-          password: getValues("Password"),
-        })
-      .then(res => {
-        if(res.data){
-          dispatch({type: 'LOGIN_SUCCESS', payload: { isLogin: true}, detail:  res.data})
-        }
-        else{
-          alert("Incorrect user information")
-        }
-      })
-  };
+  const onLogin = () => dispatch(logIn(
+    getValues("Email"), 
+    getValues("Password")
+  )) 
   return (
     <View style={styles.container}>
       <Image source={{uri : 'https://cdn3.dhht.vn/wp-content/uploads/2019/11/logo-full-mau.png'}} style={styles.Img} />

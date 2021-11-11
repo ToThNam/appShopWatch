@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
-import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native';
+import React from 'react'
+import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import { useDispatch, useSelector } from "react-redux";
 import styles from '../styles/cartStyle';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { removeItem,removeAll } from '../reducers/cart/action';
 
 const Cart = ({navigation}) => {
   const dispatch = useDispatch();
   const data = useSelector((store) => store.cartReducer.cart);
-  const onRemoveAll = () => dispatch({ type: 'REMOVE_ALL' })
-  const onRemoveItem = (item) => () => dispatch({ type: 'REMOVE_ITEM', data: item })
+  const onRemoveAll = () => dispatch(removeAll())
+  const onRemoveItem = (item) => () => dispatch(removeItem(item))
   const quantytities = data.reduce(function (previousValue, currentValue) {
     return previousValue + currentValue.quantity
   }, 0)
@@ -27,7 +28,7 @@ const Cart = ({navigation}) => {
     return (
       <View>
         <View style={[styles.FLheader]}>
-          <Text style={[styles.txtFlheader]}>{quantytities} sản phẩm, tổng cộng {total}</Text>
+          <Text style={[styles.txtFlheader]}>{quantytities} sản phẩm, tổng cộng {total} vnd</Text>
         </View>
       </View>
     )

@@ -1,7 +1,7 @@
 var data = [
   {
     id: 1,
-    url: 'https://lh3.googleusercontent.com/proxy/2kBcQk5A40y2SdDY7HNM3WP82vnOml7VwHHhh0YPbaaDlH_Tb1m9Ljm7VVEVARkNOfsqEQpJOvc8iKAfPbf2o48s0JTSrj1_Pz-EDI0t51jSLIvuwR7Nn7gBrAXrI4R2WtkPkr-fLOxJI4Ht2qyWmKH899zs395ZCKkOQNszYlniIFqbkLJ3mGI-6Lg-jT1VDh4g1gYR-p1pNJ0HLTGxEQSFjBe4q3G5VRJbUw'
+    url: 'https://donghotantan.vn/wp-content/uploads/2020/03/review-dong-ho-citizen-nighthawk-bj7006-56l.jpg'
   },
   {
     id: 2,
