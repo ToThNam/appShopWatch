@@ -121,7 +121,8 @@ const styles = StyleSheet.create({
   },
   txtSize14Bold: {
     fontWeight: 'bold',
-    fontSize: 14
+    fontSize: 14,
+    marginRight:5
   },
   txtContent: {
     fontWeight: 'bold',
@@ -141,6 +142,14 @@ const styles = StyleSheet.create({
     height: '50%',
     justifyContent: 'space-between',
     marginLeft: 10
+  },
+  quantytisButton:{
+    width:22,
+    height:22,
+    marginLeft:5,
+    borderRadius:15,
+    alignItems:'center', 
+    borderWidth:0.2
   },
   header: {
     borderBottomWidth: 1,

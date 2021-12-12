@@ -3,7 +3,8 @@ import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import { useDispatch, useSelector } from "react-redux";
 import styles from '../styles/cartStyle';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { removeItem,removeAll } from '../reducers/cart/action';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { removeItem, removeAll, addCart, reduceItem } from '../reducers/cart/action';
 
 const Cart = ({navigation}) => {
   const dispatch = useDispatch();
@@ -13,7 +14,13 @@ const Cart = ({navigation}) => {
   const quantytities = data.reduce(function (previousValue, currentValue) {
     return previousValue + currentValue.quantity
   }, 0)
-  
+  const onChangeQuantity = (type, item) => () => {
+		if (type === 'increase') {
+      dispatch(addCart(item))
+		} else {
+			dispatch(reduceItem(item))
+		}
+	}
   let total = []
   for (let e = 0; e < data.length; e++) {
     const element = data[e];
@@ -85,6 +92,14 @@ const Cart = ({navigation}) => {
           </View>
           <View style={styles.contentQuantity}>
             <Text style={styles.txtSize14Bold}>Số lượng: {item.quantity}</Text>
+            <TouchableOpacity style={styles.quantytisButton}
+					    onPress={onChangeQuantity('increase', item)}>
+					      <Ionicons name="add-outline" size={20} color={'black'} />
+				    </TouchableOpacity>
+        	  <TouchableOpacity style={styles.quantytisButton}
+					    onPress={onChangeQuantity('reduce', item)}>
+					      <Ionicons name="md-remove" size={20} color={'black'}  />
+				    </TouchableOpacity>
           </View>
         </View>
       </View>

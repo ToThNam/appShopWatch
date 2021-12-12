@@ -16,3 +16,9 @@ export const removeAll =()=>{
     type: ACTION_TYPES.REMOVE_ALL,
   }
 }
+export const reduceItem =(detail)=>{
+  return {
+    type:ACTION_TYPES.REDUCE_ITEM,
+    detail 
+  }
+}

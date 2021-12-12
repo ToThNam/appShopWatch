@@ -8,7 +8,7 @@ export default function cartReducer(state = initState, action) {
     case ACTION_TYPES.ADD_CART:
       const checkExist = state.cart.find(e => e.IDProduct  === action.detail.IDProduct )
         ?
-        // truong hợp đã có sản phẩm đấy trong list
+        // truong hợp đã có sản phẩm đấy trong list 
         state.cart?.map(e => {
           if (e.IDProduct  === action.detail.IDProduct ) {
             return ({ ...e, quantity: e.quantity + 1 })
